@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot SAMSAT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+</head>
+
+<body class="bg-gradient-light">
+    <div class="min-h-screen p-4 md:p-6 flex items-center justify-center">
+        <div class="w-full max-w-7xl flex flex-col lg:flex-row gap-6">
+            <!-- Mobile Header -->
+            <div class="lg:hidden flex justify-between items-center mb-4">
+                <a href="{{ url_for('home') }}" class="back-btn-mobile bg-blue-50 dark:bg-gray-800 p-3 rounded-xl">
+                    <i class="fas fa-arrow-left text-blue-600 dark:text-blue-400"></i>
+                </a>
+                <h1 class="text-xl font-bold gradient-text">ChatSAT</h1>
+                <button class="menu-btn p-3 bg-blue-50 dark:bg-gray-800 rounded-xl">
+                    <i class="fas fa-bars text-blue-600 dark:text-blue-400"></i>
+                </button>
+            </div>
+
+<!-- Sidebar -->
+<div class="hidden lg:flex flex-col w-80 glass-panel rounded-3xl p-6 shrink-0">
+    <!-- Profile Section -->
+    <div class="profile-section mb-8">
+        <div class="flex items-center gap-4">
+            <div class="relative float-animation">
+                <div class="avatar-container">
+                    <img src="{{ url_for('static', filename='img/icon.gif') }}"
+                         alt="AI Assistant"
+                         class="ai-avatar">
+                    <div class="avatar-overlay"></div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                </div>
+            </div>
+            <div>
+                <span class="ai-badge">
+                    <i class="fas fa-robot"></i>
+                    ChatSAT Assistant
+                </span>
+                <h1 class="text-2xl font-bold gradient-text mt-1">ChatSAT</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main sidebar content wrapper - Wrapper baru -->
+    <div class="flex flex-col flex-1 overflow-hidden">
+        <!-- Quick Actions -->
+        <div class="quick-actions space-y-4 mb-8">
+            <h2 class="text-sm font-semibold text-secondary uppercase tracking-wider">Quick Actions</h2>
+            <a href="{{ url_for('home') }}" class="action-btn">
+                <i class="fas fa-home"></i>
+                <span>Kembali</span>
+            </a>
+        </div>
+
+        <!-- Features - Sekarang dalam wrapper yang scrollable -->
+        <div class="features space-y-4 overflow-y-auto">
+            <h2 class="text-sm font-semibold text-secondary uppercase tracking-wider"></h2>
+            <div class="feature-cards space-y-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Main Chat Area -->
+            <div class="flex-1 glass-panel rounded-3xl flex flex-col overflow-hidden animate__animated animate__fadeIn">
+<!-- Chat Header -->
+<header class="p-6 backdrop-blur border-b border-white/10">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <div>
+                <h2 class="text-lg font-bold chat-header-title">SAMSAT CHATBOT</h2>
+                <div class="flex items-center gap-2">
+                    <span class="status-dot"></span>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">Online • Siap membantu anda</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+                <!-- Chat Messages -->
+                <main class="flex-1 p-6 overflow-y-auto custom-scrollbar" id="chatContainer">
+                    <!-- Messages will be inserted here -->
+                </main>
+
+                <!-- Chat Input -->
+                <footer class="p-6 backdrop-blur border-t border-white/10">
+                    <form class="chat-form" onsubmit="return false;">
+                        <div class="flex items-center gap-4">
+                            <div class="flex-1 relative">
+                                <textarea 
+                                    class="chat-input"
+                                    placeholder="Konsultasi sekarang...."
+                                    rows="1"
+                                ></textarea>
+                                <input type="file" 
+                                       id="imageInput" 
+                                       accept="image/*" 
+                                       class="hidden" 
+                                       onchange="handleImageUpload(this)">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="submit" class="send-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="flex items-center gap-4">
+                            </div>
+                        </div>
+                    </form>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main1.js') }}"></script>
+</body>
+</html>
